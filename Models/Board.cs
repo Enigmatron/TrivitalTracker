@@ -8,18 +8,29 @@ namespace TrivitalTracker.Models
     public class BoardContext : DbContext
     {
         public DbSet<Board> Boards{get;set;}
+        public DbSet<BoardSetting> BoardSettings{get;set;}
         public DbSet<Item> Items{get;set;}
         public DbSet<Bucket> Bucket{get;set;}
+        public DbSet<Comment> Comments{get;set;}
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite("Data Source=blogging.db");
     }
     public class Board
     {
-        public int Id { get; set; }
+        public int BoardID { get; set; }
+        public int OwnerID{get;set;}
+        public User Owner{get;set;}
         public string Title { get; set; }
         public string Description { get; set; }
 
         public List<Bucket> Buckets{get; set;}
+    }
+
+    public class BoardSetting{
+        public int BoardSettingID;
+        public int BoardID;
+        public int UserID;
+
     }
 
     public class Item

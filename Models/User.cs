@@ -19,7 +19,11 @@ namespace TrivitalTracker.Models
         
     }
 
-
+    public class UserSetting{
+        public int SettingID;
+        public int UserID;
+        
+    }
 
 
 
