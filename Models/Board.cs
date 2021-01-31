@@ -15,6 +15,16 @@ namespace TrivitalTracker.Models
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite("Data Source=blogging.db");
     }
+    public class BoardInspectionContext : DbContext
+    {
+        public DbSet<Board> Boards { get; set; }
+        public DbSet<BoardSetting> BoardSettings { get; set; }
+        public DbSet<Item> Items { get; set; }
+        public DbSet<Bucket> Bucket { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+            => options.UseSqlite("Data Source=blogging.db");
+    }
     public class Board
     {
         public int BoardID { get; set; }
@@ -27,9 +37,11 @@ namespace TrivitalTracker.Models
     }
 
     public class BoardSetting{
-        public int BoardSettingID;
-        public int BoardID;
-        public int UserID;
+        public int BoardSettingID{ get; set; }
+        public int BoardID{ get; set; }
+        public Board Board{get; set;}
+        public int UserID{ get; set; }
+        public User User{get; set;}
 
     }
 
@@ -58,6 +70,7 @@ namespace TrivitalTracker.Models
     public class Comment{
         public int CommentID{get;set;}
         public int ItemID{ get; set; }
+        public Item Item{ get; set; }
         public int UserID{get;set;}
         public User User{get;set;}
         public string Content{get;set;}
