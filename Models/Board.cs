@@ -30,6 +30,8 @@ namespace TrivitalTracker.Models
         public int BoardId{get; set;}
         public Bucket Bucket{get; set;}
 
+        public List<Comment> Comments{get;set;} 
+
     }
 
     public class Bucket
@@ -42,5 +44,11 @@ namespace TrivitalTracker.Models
         public string Title{get;set;}
 
     }
-
+    public class Comment{
+        public int CommentID{get;set;}
+        public int ItemID{ get; set; }
+        public int UserID{get;set;}
+        public User User{get;set;}
+        public string Content{get;set;}
+    }
 }
