@@ -17,7 +17,14 @@ namespace TrivitalTracker.Controllers
         {
             _logger = logger;
         }
-
+        public IActionResult Login()
+        {
+            return View();
+        }
+        public IActionResult Login(string username, string password)
+        {
+            return RedirectToAction("Index");
+        }
         public IActionResult Index()
         {
             return View();

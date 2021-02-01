@@ -22,11 +22,6 @@ namespace TrivitalTracker.Controllers
         {
             return View();
         }
-
-        public IActionResult Login()
-        {
-            return View();
-        }
         public IActionResult Board()
         {
             return View();
