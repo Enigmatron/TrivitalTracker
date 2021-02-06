@@ -3,6 +3,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
+
+//NOTE https://www.entityframeworktutorial.net/efcore/entity-framework-core.aspx 
 namespace TrivitalTracker.Models
 {
     public class User

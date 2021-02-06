@@ -3,8 +3,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
+//PLAN flesh out the model; write out the model; Add the OnModelCreation details to finalize the relationships; Create the queries; 
+
+//NOTE https://www.entityframeworktutorial.net/efcore/entity-framework-core.aspx
 namespace TrivitalTracker.Models
 {
+    //TODO Add "OnModelCreate" and add the relationships made
+    //TODO Add Many-Many relation for board and user to mark who can make them
+    //TODO handle direlect owners and deleted users
     public class BoardContext : DbContext
     {
         public DbSet<Board> Boards{get;set;}
