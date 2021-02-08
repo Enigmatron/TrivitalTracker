@@ -13,16 +13,6 @@ namespace TrivitalTracker.Models
     //TODO handle direlect owners and deleted users
     public class BoardContext : DbContext
     {
-        public DbSet<Board> Boards{get;set;}
-        public DbSet<BoardSetting> BoardSettings{get;set;}
-        public DbSet<Item> Items{get;set;}
-        public DbSet<Bucket> Bucket{get;set;}
-        public DbSet<Comment> Comments{get;set;}
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("Data Source=blogging.db");
-    }
-    public class BoardInspectionContext : DbContext
-    {
         public DbSet<Board> Boards { get; set; }
         public DbSet<BoardSetting> BoardSettings { get; set; }
         public DbSet<Item> Items { get; set; }
@@ -30,55 +20,70 @@ namespace TrivitalTracker.Models
         public DbSet<Comment> Comments { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite("Data Source=blogging.db");
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //Bor-AccD 1-M
+            modelBuilder.Entity<Board>()
+                .HasOne<AccountDetail>(s => s.Owner)
+                .WithMany(g => g.Boards)
+                .HasForeignKey(s => s.OwnerID);
+            //Bor-AccD 1-M
+            modelBuilder.Entity<Bucket>()
+                .HasOne<Board>(s => s.Board)//Board has 1
+                .WithMany(g => g.Buckets)
+                .HasForeignKey(s => s.BoardID);
+        }
     }
     public class Board
     {
         public int BoardID { get; set; }
-        public int OwnerID{get;set;}
-        public User Owner{get;set;}
+        public int OwnerID { get; set; }
+        public AccountDetail Owner { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
 
-        public List<Bucket> Buckets{get; set;}
+        public List<Bucket> Buckets { get; set; }
     }
 
-    public class BoardSetting{
-        public int BoardSettingID{ get; set; }
-        public int BoardID{ get; set; }
-        public Board Board{get; set;}
-        public int UserID{ get; set; }
-        public User User{get; set;}
+    public class BoardSetting
+    {
+        public int BoardSettingID { get; set; }
+        public int BoardID { get; set; }
+        public Board Board { get; set; }
+        public int UserID { get; set; }
+        public User User { get; set; }
 
     }
 
     public class Item
     {
-        public int ItemID{get; set;}
-        public string Title{get; set;}
-        public string Description { get; set;}
-        public int BoardId{get; set;}
-        public Bucket Bucket{get; set;}
+        public int ItemID { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public int BoardId { get; set; }
+        public Bucket Bucket { get; set; }
 
-        public List<Comment> Comments{get;set;} 
+        public List<Comment> Comments { get; set; }
 
     }
 
     public class Bucket
     {
-        public int BucketID{get;set;}
-        public List<Item> Items{get;set;}
-        public int BoardID{get;set;}
-        public Board Board{get;set;}
-        public string Description{get;set;}
-        public string Title{get;set;}
+        public int BucketID { get; set; }
+        public List<Item> Items { get; set; }
+        public int BoardID { get; set; }
+        public Board Board { get; set; }
+        public string Description { get; set; }
+        public string Title { get; set; }
 
     }
-    public class Comment{
-        public int CommentID{get;set;}
-        public int ItemID{ get; set; }
-        public Item Item{ get; set; }
-        public int UserID{get;set;}
-        public User User{get;set;}
-        public string Content{get;set;}
+    public class Comment
+    {
+        public int CommentID { get; set; }
+        public int ItemID { get; set; }
+        public Item Item { get; set; }
+        public int UserID { get; set; }
+        public AccountDetail User { get; set; }
+        public string Content { get; set; }
     }
 }
