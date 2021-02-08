@@ -19,6 +19,8 @@ namespace TrivitalTracker.Models
         public DbSet<Item> Items { get; set; }
         public DbSet<Bucket> Bucket { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<BoardedUser> BoardedUser { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite("Data Source=blogging.db");
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -26,8 +28,14 @@ namespace TrivitalTracker.Models
             //Bor-AccD 1-M
             modelBuilder.Entity<Board>()
                 .HasOne<AccountDetail>(s => s.Owner)
-                .WithMany(g => g.Boards)
+                .WithMany(g => g.OwnedBoards)
                 .HasForeignKey(s => s.OwnerID);
+
+            //AccD-Board M-M
+            modelBuilder.Entity<BoardedUser>().HasKey(sc => new { sc.UserID, sc.BoardID });
+
+
+
             //Bor-Bucket 1-M
             modelBuilder.Entity<Bucket>()
                 .HasOne<Board>(s => s.Board)//Bucket has 1
@@ -62,6 +70,15 @@ namespace TrivitalTracker.Models
             //     .HasForeignKey<BoardSetting>(s => s.BoardID); 
         }
     }
+
+    public class BoardedUser{
+        public int UserID;
+        public int BoardID;
+        public AccountDetail AccountDetail;
+        public Board Board;
+
+    }
+
     public class Board
     {
         public int BoardID { get; set; }
@@ -71,6 +88,7 @@ namespace TrivitalTracker.Models
         public string Description { get; set; }
 
         public List<Bucket> Buckets { get; set; }
+        public List<BoardedUser> Users { get; set; }
 
         // public int BoardSettingID;
         // public BoardSetting BoardSetting;

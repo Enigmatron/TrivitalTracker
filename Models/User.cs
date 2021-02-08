@@ -44,8 +44,10 @@ namespace TrivitalTracker.Models
         public int UserID { get; set; }
         public User User { get; set; }
         public string Name { get; set; }
-        public List<Board> Boards { get; set; }
+        public List<Board> OwnedBoards { get; set; }
         public List<Comment> Comments { get; set; }
+        public List<BoardedUser> LinkedBoards { get; set; }
+
     }
 
     public class UserSetting{
