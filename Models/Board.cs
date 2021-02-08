@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 //PLAN flesh out the model; write out the model; Add the OnModelCreation details to finalize the relationships; Create the queries; 
 
 //NOTE https://www.entityframeworktutorial.net/efcore/entity-framework-core.aspx
+//
 namespace TrivitalTracker.Models
 {
     //TODO Add "OnModelCreate" and add the relationships made
@@ -27,11 +28,31 @@ namespace TrivitalTracker.Models
                 .HasOne<AccountDetail>(s => s.Owner)
                 .WithMany(g => g.Boards)
                 .HasForeignKey(s => s.OwnerID);
-            //Bor-AccD 1-M
+            //Bor-Bucket 1-M
             modelBuilder.Entity<Bucket>()
-                .HasOne<Board>(s => s.Board)//Board has 1
-                .WithMany(g => g.Buckets)
+                .HasOne<Board>(s => s.Board)//Bucket has 1
+                .WithMany(g => g.Buckets)//Board has M
                 .HasForeignKey(s => s.BoardID);
+            //Buc-Item 1-M
+            modelBuilder.Entity<Item>()
+                .HasOne<Bucket>(s => s.Bucket)//Bucket has 1
+                .WithMany(g => g.Items)//Board has M
+                .HasForeignKey(s => s.BucketID);
+            //Item-Comment 1-M
+            modelBuilder.Entity<Comment>()
+                .HasOne<Item>(s => s.Item)//Bucket has 1
+                .WithMany(g => g.Comments)//Board has M
+                .HasForeignKey(s => s.ItemID);
+            //Comment-Acc 1-M
+            modelBuilder.Entity<Comment>()
+                .HasOne<AccountDetail>(s => s.User)//Bucket has 1
+                .WithMany(g => g.Comments)//Board has M
+                .HasForeignKey(s => s.UserID);
+            //Comment-Acc 1-M
+            modelBuilder.Entity<Board>()
+                .HasOne<BoardSetting>(s => s.BoardSetting)//Bucket has 1
+                .WithOne(g => g.Board)//Board has 1
+                .HasForeignKey<BoardSetting>(s => s.BoardID);
         }
     }
     public class Board
@@ -43,6 +64,9 @@ namespace TrivitalTracker.Models
         public string Description { get; set; }
 
         public List<Bucket> Buckets { get; set; }
+
+        public int BoardSettingID;
+        public BoardSetting BoardSetting;
     }
 
     public class BoardSetting
@@ -60,7 +84,7 @@ namespace TrivitalTracker.Models
         public int ItemID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public int BoardId { get; set; }
+        public int BucketID { get; set; }
         public Bucket Bucket { get; set; }
 
         public List<Comment> Comments { get; set; }

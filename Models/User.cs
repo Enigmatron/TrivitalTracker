@@ -45,6 +45,7 @@ namespace TrivitalTracker.Models
         public User User { get; set; }
         public string Name { get; set; }
         public List<Board> Boards { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 
     public class UserSetting{
