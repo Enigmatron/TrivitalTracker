@@ -19,14 +19,17 @@ namespace TrivitalTracker.Controllers
         }
         public IActionResult Login()
         {
+            //TODO Check cookies and redirect
             return View();
         }
         public IActionResult Login(string username, string password)
         {
+            //TODO Add authentication
             return RedirectToAction("Index");
         }
         public IActionResult Index()
         {
+
             return View();
         }
 

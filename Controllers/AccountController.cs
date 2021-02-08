@@ -24,6 +24,7 @@ namespace TrivitalTracker.Controllers
         }
         public IActionResult Board()
         {
+            //TODO add a query for all boards that your
             return View();
         }
         public IActionResult Board(int id)

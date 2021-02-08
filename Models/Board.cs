@@ -14,33 +14,41 @@ namespace TrivitalTracker.Models
     //TODO handle direlect owners and deleted users
     public class BoardContext : DbContext
     {
-        public DbSet<Board> Boards { get; set; }
+        public DbSet<Kanban> Boards { get; set; }
         // public DbSet<BoardSetting> BoardSettings { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Bucket> Bucket { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<BoardedUser> BoardedUser { get; set; }
+        public DbSet<KanbanUser> BoardedUser { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite("Data Source=blogging.db");
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Bor-AccD 1-M
-            modelBuilder.Entity<Board>()
-                .HasOne<AccountDetail>(s => s.Owner)
-                .WithMany(g => g.OwnedBoards)
-                .HasForeignKey(s => s.OwnerID);
+            //NOTE removed because many-many can consume this relationship
+            // //Bor-AccD 1-M
+            // modelBuilder.Entity<Board>()
+            //     .HasOne<AccountDetail>(s => s.Owner)
+            //     .WithMany(g => g.OwnedBoards)
+            //     .HasForeignKey(s => s.OwnerID);
 
             //AccD-Board M-M
-            modelBuilder.Entity<BoardedUser>().HasKey(sc => new { sc.UserID, sc.BoardID });
-
+            modelBuilder.Entity<KanbanUser>().HasKey(sc => new { sc.UserID, sc.KanbanID });
+            modelBuilder.Entity<KanbanUser>()
+                .HasOne<AccountDetail>(s => s.User)
+                .WithMany(g => g.Kanbans)
+                .HasForeignKey(s => s.UserID);
+            modelBuilder.Entity<KanbanUser>()
+                .HasOne<Kanban>(s => s.Kanban)
+                .WithMany(g => g.Users)
+                .HasForeignKey(s => s.KanbanID);
 
 
             //Bor-Bucket 1-M
             modelBuilder.Entity<Bucket>()
-                .HasOne<Board>(s => s.Board)//Bucket has 1
+                .HasOne<Kanban>(s => s.Kanban)//Bucket has 1
                 .WithMany(g => g.Buckets)//Board has M
-                .HasForeignKey(s => s.BoardID);
+                .HasForeignKey(s => s.KanbanID);
             //Buc-Item 1-M
             modelBuilder.Entity<Item>()
                 .HasOne<Bucket>(s => s.Bucket)//Bucket has 1
@@ -71,24 +79,23 @@ namespace TrivitalTracker.Models
         }
     }
 
-    public class BoardedUser{
+    public class KanbanUser{
         public int UserID;
-        public int BoardID;
-        public AccountDetail AccountDetail;
-        public Board Board;
+        public int KanbanID;
+        public bool Owner;
+        public AccountDetail User;
+        public Kanban Kanban;
 
     }
 
-    public class Board
+    public class Kanban
     {
-        public int BoardID { get; set; }
-        public int OwnerID { get; set; }
-        public AccountDetail Owner { get; set; }
+        public int KanbanID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
 
         public List<Bucket> Buckets { get; set; }
-        public List<BoardedUser> Users { get; set; }
+        public List<KanbanUser> Users { get; set; }
 
         // public int BoardSettingID;
         // public BoardSetting BoardSetting;
@@ -120,8 +127,8 @@ namespace TrivitalTracker.Models
     {
         public int BucketID { get; set; }
         public List<Item> Items { get; set; }
-        public int BoardID { get; set; }
-        public Board Board { get; set; }
+        public int KanbanID { get; set; }
+        public Kanban Kanban { get; set; }
         public string Description { get; set; }
         public string Title { get; set; }
 
