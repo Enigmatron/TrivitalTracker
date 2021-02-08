@@ -15,7 +15,7 @@ namespace TrivitalTracker.Models
     public class BoardContext : DbContext
     {
         public DbSet<Board> Boards { get; set; }
-        public DbSet<BoardSetting> BoardSettings { get; set; }
+        // public DbSet<BoardSetting> BoardSettings { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Bucket> Bucket { get; set; }
         public DbSet<Comment> Comments { get; set; }
@@ -48,11 +48,18 @@ namespace TrivitalTracker.Models
                 .HasOne<AccountDetail>(s => s.User)//Bucket has 1
                 .WithMany(g => g.Comments)//Board has M
                 .HasForeignKey(s => s.UserID);
+
+            //NOTE Removed because board takes the responsibilities and information hiding is not necc right now.    
             //Comment-Acc 1-M
-            modelBuilder.Entity<Board>()
-                .HasOne<BoardSetting>(s => s.BoardSetting)//Bucket has 1
-                .WithOne(g => g.Board)//Board has 1
-                .HasForeignKey<BoardSetting>(s => s.BoardID);
+            // modelBuilder.Entity<Board>()
+            //     .HasOne<BoardSetting>(s => s.BoardSetting)//Bucket has 1
+            //     .WithOne(g => g.Board)//Board has 1
+            //     .HasForeignKey<BoardSetting>(s => s.BoardID);
+            // //BoardSe
+            // modelBuilder.Entity<Board>()
+            //     .HasOne<BoardSetting>(s => s.BoardSetting)//Bucket has 1
+            //     .WithOne(g => g.Board)//Board has 1
+            //     .HasForeignKey<BoardSetting>(s => s.BoardID); 
         }
     }
     public class Board
@@ -65,19 +72,19 @@ namespace TrivitalTracker.Models
 
         public List<Bucket> Buckets { get; set; }
 
-        public int BoardSettingID;
-        public BoardSetting BoardSetting;
+        // public int BoardSettingID;
+        // public BoardSetting BoardSetting;
     }
 
-    public class BoardSetting
-    {
-        public int BoardSettingID { get; set; }
-        public int BoardID { get; set; }
-        public Board Board { get; set; }
-        public int UserID { get; set; }
-        public User User { get; set; }
+    // public class BoardSetting
+    // {
+    //     public int BoardSettingID { get; set; }
+    //     public int BoardID { get; set; }
+    //     public Board Board { get; set; }
+    //     public int UserID { get; set; }
+    //     public AccountDetail User { get; set; }
 
-    }
+    // }
 
     public class Item
     {
