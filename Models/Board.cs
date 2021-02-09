@@ -26,7 +26,7 @@ namespace TrivitalTracker.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //NOTE removed because many-many can consume this relationship
-            // //Bor-AccD 1-M
+            //Bor-AccD 1-M
             // modelBuilder.Entity<Board>()
             //     .HasOne<AccountDetail>(s => s.Owner)
             //     .WithMany(g => g.OwnedBoards)
@@ -42,8 +42,6 @@ namespace TrivitalTracker.Models
                 .HasOne<Kanban>(s => s.Kanban)
                 .WithMany(g => g.Users)
                 .HasForeignKey(s => s.KanbanID);
-
-
             //Bor-Bucket 1-M
             modelBuilder.Entity<Bucket>()
                 .HasOne<Kanban>(s => s.Kanban)//Bucket has 1
