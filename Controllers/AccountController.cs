@@ -20,6 +20,7 @@ namespace TrivitalTracker.Controllers
 
         public IActionResult Index()
         {
+            //TODO Query your boards, get lastTime modified & Name & last used by you
             return View();
         }
         public IActionResult Board()

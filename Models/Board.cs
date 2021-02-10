@@ -77,7 +77,8 @@ namespace TrivitalTracker.Models
         }
     }
 
-    public class KanbanUser{
+    public class KanbanUser
+    {
         public int UserID;
         public int KanbanID;
         public bool Owner;

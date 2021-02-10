@@ -37,9 +37,10 @@ namespace TrivitalTracker.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public AccountDetail AccountDetail { get; set; }
-        public UserSetting UserSetting { get; set;}
+        public UserSetting UserSetting { get; set; }
     }
-    public class AccountDetail{
+    public class AccountDetail
+    {
         public int AccountID { get; set; }
         public int UserID { get; set; }
         public User User { get; set; }
@@ -49,12 +50,13 @@ namespace TrivitalTracker.Models
 
     }
 
-    public class UserSetting{
+    public class UserSetting
+    {
         public int SettingID { get; set; }
         public int UserID { get; set; }
         public User User { get; set; }
         public int SettingBitFlag { get; set; }
-        
+
     }
 
 
