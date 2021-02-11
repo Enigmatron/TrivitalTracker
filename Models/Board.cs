@@ -90,6 +90,8 @@ namespace TrivitalTracker.Models
     public class Kanban
     {
         public int KanbanID { get; set; }
+        [Required]
+        [MaxLength(24)]
         public string Title { get; set; }
         public string Description { get; set; }
 
@@ -113,6 +115,7 @@ namespace TrivitalTracker.Models
     public class Item
     {
         public int ItemID { get; set; }
+        [Required]
         public string Title { get; set; }
         public string Description { get; set; }
         public int BucketID { get; set; }
@@ -124,21 +127,28 @@ namespace TrivitalTracker.Models
 
     public class Bucket
     {
+        [Key]
         public int BucketID { get; set; }
         public List<Item> Items { get; set; }
+        [Required]
         public int KanbanID { get; set; }
+        [Required]
         public Kanban Kanban { get; set; }
         public string Description { get; set; }
+        [Required]
         public string Title { get; set; }
 
     }
     public class Comment
     {
         public int CommentID { get; set; }
-        public int ItemID { get; set; }
+        public int ItemID { get; set;
+        [Required]}
         public Item Item { get; set; }
         public int UserID { get; set; }
+        [Required]
         public AccountDetail User { get; set; }
+        [Required]
         public string Content { get; set; }
     }
 }
