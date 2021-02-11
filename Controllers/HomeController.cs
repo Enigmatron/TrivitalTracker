@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using TrivitalTracker.Models;
+using System.Security.Cryptography;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 
 //NOTE Cookies:https://docs.microsoft.com/en-us/previous-versions/aspnet/ms178194(v=vs.100)
@@ -44,9 +46,15 @@ namespace TrivitalTracker.Controllers
             ViewBag.Message = "error: username or password is incorrect";
             return RedirectToAction("Login");
         }
-        public IActionResult Index()
-        {
 
+        //NOTE https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/consumer-apis/password-hashing?view=aspnetcore-5.0
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult SignUp(string username, string password, string email, string displayName)
+        {
             return View();
         }
 
