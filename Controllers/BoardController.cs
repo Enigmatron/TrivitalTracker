@@ -20,6 +20,8 @@ namespace TrivitalTracker.Controllers
 
         public IActionResult Index()
         {
+
+            //TODO there is only one view and it is a fully dynamic js page that has all the model info needed and loads it to the page dynamically
             return View();
         }
 
