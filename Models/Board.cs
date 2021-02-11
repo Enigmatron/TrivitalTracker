@@ -142,8 +142,8 @@ namespace TrivitalTracker.Models
     public class Comment
     {
         public int CommentID { get; set; }
-        public int ItemID { get; set;
-        [Required]}
+        public int ItemID { get; set;}
+        [Required]
         public Item Item { get; set; }
         public int UserID { get; set; }
         [Required]
