@@ -15603,8 +15603,23 @@
   "RootNamespace": "TrivitalTracker",
   "Documents": [
     {
+      "FilePath": "d:\\Desktop\\TrivitalTracker\\Views\\Board\\Index.cshtml",
+      "TargetPath": "Views\\Board\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Desktop\\TrivitalTracker\\Views\\Home\\Login.cshtml",
+      "TargetPath": "Views\\Home\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\Desktop\\TrivitalTracker\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Desktop\\TrivitalTracker\\Views\\Home\\SignUp.cshtml",
+      "TargetPath": "Views\\Home\\SignUp.cshtml",
       "FileKind": "mvc"
     },
     {
