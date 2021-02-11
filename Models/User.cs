@@ -28,13 +28,27 @@ namespace TrivitalTracker.Models
                 .HasOne<UserSetting>(s => s.UserSetting)
                 .WithOne(g => g.User)
                 .HasForeignKey<UserSetting>(s => s.UserID);
+
+            modelBuilder.Entity<User>()
+            .HasIndex(u => u.Email)
+            .IsUnique();
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Username)
+                .IsUnique();
         }
     }
     public class User
     {
+        [Key]
         public int ID { get; set; }
+        [Required]
+        [MaxLength(24)]
         public string Username { get; set; }
+        [Required]
+        [MaxLength(320)]
         public string Email { get; set; }
+        [Required]
+        [MaxLength(24)]
         public string Password { get; set; }
         public AccountDetail AccountDetail { get; set; }
         public UserSetting UserSetting { get; set; }
