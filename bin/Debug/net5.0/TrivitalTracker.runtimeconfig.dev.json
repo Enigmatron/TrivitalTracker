@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Enigma\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Enigma\\.nuget\\packages"
+    ]
+  }
+}

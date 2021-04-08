@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Desktop\\TrivitalTracker\\TrivitalTracker.csproj": {}
+    "D:\\Documents\\GitHub\\TrivitalTracker\\TrivitalTracker.csproj": {}
   },
   "projects": {
-    "D:\\Desktop\\TrivitalTracker\\TrivitalTracker.csproj": {
+    "D:\\Documents\\GitHub\\TrivitalTracker\\TrivitalTracker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Desktop\\TrivitalTracker\\TrivitalTracker.csproj",
+        "projectUniqueName": "D:\\Documents\\GitHub\\TrivitalTracker\\TrivitalTracker.csproj",
         "projectName": "TrivitalTracker",
-        "projectPath": "D:\\Desktop\\TrivitalTracker\\TrivitalTracker.csproj",
-        "packagesPath": "C:\\Users\\Enigmatron\\.nuget\\packages\\",
-        "outputPath": "D:\\Desktop\\TrivitalTracker\\obj\\",
+        "projectPath": "D:\\Documents\\GitHub\\TrivitalTracker\\TrivitalTracker.csproj",
+        "packagesPath": "C:\\Users\\Enigma\\.nuget\\packages\\",
+        "outputPath": "D:\\Documents\\GitHub\\TrivitalTracker\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Enigmatron\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Enigma\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -70,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

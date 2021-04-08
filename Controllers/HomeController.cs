@@ -48,6 +48,10 @@ namespace TrivitalTracker.Controllers
         }
 
         //NOTE https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/consumer-apis/password-hashing?view=aspnetcore-5.0
+        public IActionResult Index()
+        {
+            return View();
+        }
         public IActionResult SignUp()
         {
             return View();
