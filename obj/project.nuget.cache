@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bPo6i0IipGftPCoPFhAk9or7yjyIP0R7OrCM+azh1w+KwWC/pv0p5vSo7tc/hBo0DovmYHkon9MBVJXI2qzH7A==",
+  "dgSpecHash": "Hi1P0+XQwySstPUNUo8evw1zHuiFRODdmwRQKpSEm2R4Ive42o9wJwh0V4wuZdXP+yUEdsHi8dIOvu4vg/jRnQ==",
   "success": true,
-  "projectFilePath": "D:\\Documents\\GitHub\\TrivitalTracker\\TrivitalTracker.csproj",
+  "projectFilePath": "D:\\Desktop\\GitHub\\TrivitalTracker\\TrivitalTracker.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Enigma\\.nuget\\packages\\microsoft.data.sqlite.core\\5.0.2\\microsoft.data.sqlite.core.5.0.2.nupkg.sha512",
     "C:\\Users\\Enigma\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\3.1.6\\microsoft.dotnet.platformabstractions.3.1.6.nupkg.sha512",

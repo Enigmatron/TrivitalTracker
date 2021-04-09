@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Documents\\GitHub\\TrivitalTracker\\TrivitalTracker.csproj": {}
+    "D:\\Desktop\\GitHub\\TrivitalTracker\\TrivitalTracker.csproj": {}
   },
   "projects": {
-    "D:\\Documents\\GitHub\\TrivitalTracker\\TrivitalTracker.csproj": {
+    "D:\\Desktop\\GitHub\\TrivitalTracker\\TrivitalTracker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documents\\GitHub\\TrivitalTracker\\TrivitalTracker.csproj",
+        "projectUniqueName": "D:\\Desktop\\GitHub\\TrivitalTracker\\TrivitalTracker.csproj",
         "projectName": "TrivitalTracker",
-        "projectPath": "D:\\Documents\\GitHub\\TrivitalTracker\\TrivitalTracker.csproj",
+        "projectPath": "D:\\Desktop\\GitHub\\TrivitalTracker\\TrivitalTracker.csproj",
         "packagesPath": "C:\\Users\\Enigma\\.nuget\\packages\\",
-        "outputPath": "D:\\Documents\\GitHub\\TrivitalTracker\\obj\\",
+        "outputPath": "D:\\Desktop\\GitHub\\TrivitalTracker\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Enigma\\AppData\\Roaming\\NuGet\\NuGet.Config",
